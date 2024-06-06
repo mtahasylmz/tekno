@@ -40,5 +40,5 @@ include_directories(
 
 
 #add_executable(random_velocities src/random_velocities.cpp )
-#target_link_libraries(random_velocities ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+#tranquela target_link_libraries(random_velocities ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
