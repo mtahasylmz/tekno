@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- specify path to the robot description file -->
+  <arg name="urdf_path" default="$(find tekno)/urdf/body.urdf"/>
+
+  <!-- start simulation world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find tekno)/worlds/base.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+  </include>
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" textfile="$(arg urdf_path)" />
+
+  <!-- push robot_description and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0.0 -y 0.0 -z 0.0"
+    respawn="false" output="screen" />
+ 
+  <!-- publish joints robot state -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+    <remap from="/joint_states" to="/tekno/joint_states" />
+  </node>
+  
+  <!-- run random publisher node-->
+  <!--  <node name="random_velocities" pkg="turtlebot" type="random_velocities" respawn="false" output="screen"/ -->
+  
+
+</launch>
