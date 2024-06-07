@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.0.2)
-project(turtlebot)
+project(tekno)
 
 
 
@@ -38,6 +38,12 @@ include_directories(
         include
         ${catkin_INCLUDE_DIRS}
 )
+
+install(DIRECTORY urdf/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/urdf)
+
+install(DIRECTORY launch/
+        DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
 
 
 #add_executable(random_velocities src/random_velocities.cpp )
