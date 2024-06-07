@@ -29,7 +29,7 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 
 
 catkin_package(
-        INCLUDE_DIRS include
+        #INCLUDE_DIRS include
         CATKIN_DEPENDS roscpp gazebo_ros gazebo_ros_control controller_manager effort_controllers robot_state_publisher std_msgs sensor_msgs
 )
 
