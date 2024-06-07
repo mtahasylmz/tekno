@@ -4,6 +4,8 @@
     <!-- Example Link-->
     <link name="base_link">
     
+        <xacro:include filename="robot_core_urdf.xacro"/>
+
     </link>
 
 </robot>

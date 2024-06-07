@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro" name="robot">
 
+    <xacro:include filename="inertial_macros.xacro"/>
+
+
     <material name="white">
         <color rgba="1 1 1 1"/>
     </material>
@@ -36,7 +39,7 @@
             <geometry>
                 <box size="0.3 0.3 0.15"/>
             </geometry>
-            <material name="white"/>
+
         </visual>
 
         <collision>
@@ -44,17 +47,17 @@
             <geometry>
                 <box size="0.3 0.3 0.15"/>
             </geometry>
-            <material name="white"/>
         </collision>
     </link>
 
     <!-- LEFT WHEEL LİNK -->
 
+
     <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
         <origin xyz="0 0 0.175" rpy="-${pi/2} 0 0"/>
-        <axis ="0 0 1"/>
+        <axis xyz="0 0 1"/>
 
     </joint>
 
@@ -69,7 +72,6 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="blue"/>
         </collision>
     </link>
 
@@ -79,7 +81,7 @@
         <parent link="base_link"/>
         <child link="right_wheel"/>
         <origin xyz="0 0 -0.175" rpy="${pi/2} 0 0"/>
-        <axis ="0 0 -1"/>
+        <axis xyz="0 0 -1"/>
 
     </joint>
 
@@ -94,7 +96,6 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="blue"/>
         </collision>
     </link>
 
@@ -111,13 +112,12 @@
             <geometry>
                 <sphere radius="0.05"/>
             </geometry>
-            <material="black"/>
+            <material name="black"/>
         </visual>
         <collision>
             <geometry>
                 <sphere radius="0.05"/>
             </geometry>
-            <material="black"/>
         </collision>
     </link>
 
