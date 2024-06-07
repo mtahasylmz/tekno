@@ -10,11 +10,19 @@
     </material>
 
     <material name="blue">
+<<<<<<< HEAD
         <color rbga="0.2 0.2 1 1"/>
     </material>
 
     <material name="black">
         <color  rgba="0 0 0 1"/>
+=======
+        <color rgba="0.2 0.2 1 1"/>
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+>>>>>>> 82f12a0ea332a995b0bbc9be4083b38d036c3658
     </material>
 
     <!-- BASE LİNK -->
@@ -32,12 +40,20 @@
 
     <link name="chassis">
         <visual>
-            <origin xyz="0.15 0 0.075">
+            <origin xyz="0.15 0 0.075"/>
             <geometry>
                 <box size="0.3 0.3 0.15"/>
             </geometry>
             <material name="white"/>
         </visual>
+
+        <collision>
+            <origin xyz="0.15 0 0.075"/>
+            <geometry>
+                <box size="0.3 0.3 0.15"/>
+            </geometry>
+            <material name="white"/>
+        </collision>
     </link>
 
     <!-- LEFT WHEEL LİNK -->
@@ -57,6 +73,12 @@
             </geometry>
             <material name="blue"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.05" length="0.04"/>
+            </geometry>
+            <material name="blue"/>
+        </collision>
     </link>
 
     <!-- RİGHT WHEEL LİNK -->
@@ -76,9 +98,36 @@
             </geometry>
             <material name="blue"/>
         </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.05" length="0.04"/>
+            </geometry>
+            <material name="blue"/>
+        </collision>
     </link>
 
-    
+    <!-- CASTER WHEEL LİNK -->
+
+    <joint name="caster_wheel_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_wheel"/>
+        <origin xyz="0.24 0 0"/>
+    </joint>
+
+    <link name="caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+            <material="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.05"/>
+            </geometry>
+            <material="black"/>
+        </collision>
+    </link>
 
 
 
