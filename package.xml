@@ -34,59 +34,33 @@
   <!-- Use depend as a shortcut for packages that are both build and exec dependencies -->
   <!--   <depend>roscpp</depend> -->
   <!--   Note that this is equivalent to the following: -->
-  <!--   <build_depend>roscpp</build_depend> -->
-  <!--   <exec_depend>roscpp</exec_depend> -->
-  <!-- Use build_depend for packages you need at compile time: -->
-  <!--   <build_depend>message_generation</build_depend> -->
-  <!-- Use build_export_depend for packages you need in order to build against this package: -->
-  <!--   <build_export_depend>message_generation</build_export_depend> -->
-  <!-- Use buildtool_depend for build tool packages: -->
-  <!--   <buildtool_depend>catkin</buildtool_depend> -->
-  <!-- Use exec_depend for packages you need at runtime: -->
-  <!--   <exec_depend>message_runtime</exec_depend> -->
+  <!--   <depend>roscpp</depend> -->
+  <!--   <depend>roscpp</depend> -->
+  <!-- Use depend for packages you need at compile time: -->
+  <!--   <depend>message_generation</depend> -->
+  <!-- Use depend for packages you need in order to build against this package: -->
+  <!--   <depend>message_generation</depend> -->
+  <!-- Use depend for build tool packages: -->
+  <!--   <depend>catkin</depend> -->
+  <!-- Use depend for packages you need at runtime: -->
+  <!--   <depend>message_runtime</depend> -->
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>rospy</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>gazebo_ros</build_depend>
-  <build_depend>gazebo_ros_control</build_depend>
-  
-  <build_depend>controller_manager</build_depend>
-  <build_export_depend>controller_manager</build_export_depend>
-  <exec_depend>controller_manager</exec_depend>
+  <depend>gazebo_ros</depend>
+  <depend>gazebo_ros_control</depend>
+  <depend>controller_manager</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>effort_controllers</depend>
+  <depend>roscpp</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
 
-  <build_depend>robot_state_publisher</build_depend>
-  <build_export_depend>robot_state_publisher</build_export_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  
-  <build_depend>geometry_msgs</build_depend>
-  <build_export_depend>geometry_msgs</build_export_depend>
-  <exec_depend>geometry_msgs</exec_depend>
 
-  <build_depend>sensor_msgs</build_depend>
-  <build_export_depend>sensor_msgs</build_export_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-
-  <build_depend>effort_controllers</build_depend>
-  <build_export_depend>effort_controllers</build_export_depend>
-  <exec_depend>effort_controllers</exec_depend>
-
-  <build_export_depend>roscpp</build_export_depend>
-  <build_export_depend>rospy</build_export_depend>
-  <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>gazebo_ros</build_export_depend>
-  <build_export_depend>gazebo_ros_control</build_export_depend>
-  
-  <exec_depend>roscpp</exec_depend>
-  <exec_depend>rospy</exec_depend>
-  <exec_depend>std_msgs</exec_depend>
-  <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>robot_state_publisher</exec_depend>
-  <exec_depend>gazebo_ros_control</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

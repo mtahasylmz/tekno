@@ -20,7 +20,25 @@
     <!-- BASE LINK -->
     
     <link name="base_link">
-    </link>
+    <visual>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="1 0.0 0.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.1 0.1"/>
+      </geometry>
+      
+    </collision>
+    <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
+  </link>
 
     <!-- CHASSIS LINK -->
 
@@ -46,6 +64,10 @@
             </geometry>
             <material name="white"/>
         </collision>
+        <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
     </link>
 
     <!-- LEFT WHEEL LINK -->
@@ -70,6 +92,10 @@
             </geometry>
             <material name="blue"/>
         </collision>
+        <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
     </link>
 
     <!-- RIGHT WHEEL LINK -->
@@ -94,6 +120,10 @@
             </geometry>
             <material name="blue"/>
         </collision>
+        <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
     </link>
 
     <!-- CASTER WHEEL LINK -->
@@ -117,6 +147,10 @@
             </geometry>
             <material name="black"/>
         </collision>
+        <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+    </inertial>
     </link>
     <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
