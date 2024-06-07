@@ -20,24 +20,7 @@
     <!-- BASE LINK -->
     
     <link name="base_link">
-    <visual>
-      <geometry>
-        <box size="0.1 0.1 0.1"/>
-      </geometry>
-      <material name="blue">
-        <color rgba="1 0.0 0.0 1"/>
-      </material>
-    </visual>
-    <collision>
-      <geometry>
-        <box size="0.1 0.1 0.1"/>
-      </geometry>
-      
-    </collision>
-    <inertial>
-      <mass value="5.0"/>
-      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
-    </inertial>
+    
   </link>
 
     <!-- CHASSIS LINK -->
@@ -50,9 +33,9 @@
 
     <link name="chassis">
         <visual>
-            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
+            <origin xyz="0.03 0 0.075" rpy="0 0 0"/>
             <geometry>
-                <box size="0.3 0.3 0.15"/>
+                <box size="0.35 0.31 0.15"/>
             </geometry>
             <material name="white"/>
         </visual>
@@ -60,7 +43,7 @@
         <collision>
             <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
             <geometry>
-                <box size="0.3 0.3 0.15"/>
+                <box size="0.35 0.31 0.15"/>
             </geometry>
             <material name="white"/>
         </collision>
@@ -75,7 +58,7 @@
     <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
-        <origin xyz="0 0 0.175" rpy="1.5708 0 0"/> <!-- 1.5708 rad is equivalent to pi/2 -->
+        <origin xyz="0 0.175 0" rpy="1.5708 0 0"/> <!-- 1.5708 rad is equivalent to pi/2 -->
         <axis xyz="0 0 1"/>
     </joint>
 
@@ -93,7 +76,7 @@
             <material name="blue"/>
         </collision>
         <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
     </inertial>
     </link>
@@ -103,7 +86,7 @@
     <joint name="right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <origin xyz="0 0 -0.175" rpy="-1.5708 0 0"/> <!-- -1.5708 rad is equivalent to -pi/2 -->
+        <origin xyz="0 -0.175 0" rpy="-1.5708 0 0"/> <!-- -1.5708 rad is equivalent to -pi/2 -->
         <axis xyz="0 0 -1"/>
     </joint>
 
@@ -121,7 +104,7 @@
             <material name="blue"/>
         </collision>
         <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
     </inertial>
     </link>
@@ -148,7 +131,7 @@
             <material name="black"/>
         </collision>
         <inertial>
-      <mass value="5.0"/>
+      <mass value="0.5"/>
       <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
     </inertial>
     </link>
