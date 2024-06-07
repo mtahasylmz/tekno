@@ -2,7 +2,7 @@
 <launch>
 
   <!-- specify path to the robot description file -->
-  <arg name="urdf_path" default="$(find tekno)/urdf/robot_core.urdf.xacro"/>
+  <arg name="urdf_path" default="$(find tekno)/urdf/robot_core.urdf"/>
 
   <!-- start simulation world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -22,6 +22,7 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
 	respawn="false" output="screen">
     <remap from="/joint_states" to="/tekno/joint_states" />
+    <param name="publish_frequency" type="double" value="50.0" />
   </node>
   
   <!-- run random publisher node-->

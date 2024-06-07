@@ -2,6 +2,6 @@
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro" name="robot">
 
     <!-- Example Link-->
-    <link name="base_link"></link>
+    <xacro:include filename="robot_core_urdf.xacro"/>
 
 </robot>

@@ -1,0 +1,33 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+    Properties:
+      Displays:
+        - Alpha: 1
+          Class: rviz/RobotModel
+          Enabled: true
+          Name: Robot Model
+          Robot Description: /robot_description
+          Visible: true
+      Name: Displays
+    Splitter Ratio: 0.5
+Visualization Manager:
+  Class: ""
+  Enabled: true
+  Name: Visualization Manager
+  Splitter Ratio: 0.5
+  Value: true
+  Views:
+    Current: ""
+    Saved: {}
+    class: rviz/Map
+Window Geometry:
+  Displays:
+    collapsed: false
+    height: 480
+    maximized: false
+    width: 640
+    x: 0
+    y: 0
+  QMainWindow State: 0
+  Time: 0
