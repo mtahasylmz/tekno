@@ -10,11 +10,11 @@
     </material>
 
     <material name="blue">
-        <color = "0.2 0.2 1 1"/>
+        <color rbga="0.2 0.2 1 1"/>
     </material>
 
     <material name="black">
-        <color = "0 0 0 1">
+        <color  rgba="0 0 0 1"/>
     </material>
 
     <!-- BASE LİNK -->
