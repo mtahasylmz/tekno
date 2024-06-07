@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="https://www.ros.org/wiki/xacro" name="robot">
 
-    <xacro:include filename="inertial_macros.xacro"/>
-
-
     <material name="white">
         <color rgba="1 1 1 1"/>
     </material>
@@ -20,45 +17,53 @@
         <color rgba="0 0 0 1"/>
     </material>
 
-    <!-- BASE LİNK -->
+    <!-- BASE LINK -->
     
     <link name="base_link">
+    
+        <origin xyz="-5 0 0"/>
+
     </link>
 
-    <!-- CHASSİS LİNK -->
+    <!-- CHASSIS LINK -->
 
     <joint name="chassis_joint" type="fixed">
         <parent link="base_link"/>
         <child link="chassis"/>
-        <origin xyz="0.1 0 0"/>
+        <origin xyz="0 0 0"/>
     </joint>
 
     <link name="chassis">
         <visual>
-            <origin xyz="0.15 0 0.075"/>
+            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
             <geometry>
-                <box size="0.3 0.3 0.15"/>
+                <box size="1 0.3 0.15"/>
             </geometry>
-
+            <material name="white"/>
         </visual>
 
         <collision>
-            <origin xyz="0.15 0 0.075"/>
+            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
             <geometry>
                 <box size="0.3 0.3 0.15"/>
             </geometry>
+            <material name="white"/>
         </collision>
+    
+        <inertial>
+            <mass value="5.0"/>
+            <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+        </inertial>
+    
     </link>
 
-    <!-- LEFT WHEEL LİNK -->
-
+    <!-- LEFT WHEEL LINK -->
 
     <joint name="left_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="left_wheel"/>
-        <origin xyz="0 0 0.175" rpy="-${pi/2} 0 0"/>
+        <origin xyz="0 0.175 0" rpy="1.5708 0 0"/> <!-- 1.5708 rad is equivalent to pi/2 -->
         <axis xyz="0 0 1"/>
-
     </joint>
 
     <link name="left_wheel">
@@ -72,17 +77,21 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
+            <material name="blue"/>
         </collision>
+        <inertial>
+            <mass value="0.2"/>
+            <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+        </inertial>
     </link>
 
-    <!-- RİGHT WHEEL LİNK -->
+    <!-- RIGHT WHEEL LINK -->
 
     <joint name="right_wheel_joint" type="continuous">
         <parent link="base_link"/>
         <child link="right_wheel"/>
-        <origin xyz="0 0 -0.175" rpy="${pi/2} 0 0"/>
+        <origin xyz="0 -0.175 0" rpy="-1.5708 0 0"/> <!-- -1.5708 rad is equivalent to -pi/2 -->
         <axis xyz="0 0 -1"/>
-
     </joint>
 
     <link name="right_wheel">
@@ -96,10 +105,15 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
+            <material name="blue"/>
         </collision>
+        <inertial>
+            <mass value="0.2"/>
+            <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+        </inertial>
     </link>
 
-    <!-- CASTER WHEEL LİNK -->
+    <!-- CASTER WHEEL LINK -->
 
     <joint name="caster_wheel_joint" type="fixed">
         <parent link="base_link"/>
@@ -118,9 +132,33 @@
             <geometry>
                 <sphere radius="0.05"/>
             </geometry>
+            <material name="black"/>
         </collision>
+
+        <inertial>
+            <mass value="0.2"/>
+            <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
+        </inertial>
+
     </link>
-
-
-
+    <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/robot</namespace>
+        <remapFrom>cmd_vel</remapFrom> <remapTo>/cmd_vel</remapTo>
+      </ros>
+      <leftJoint>left_wheel_joint</leftJoint>
+      <rightJoint>right_wheel_joint</rightJoint>
+      <wheelSeparation>0.3</wheelSeparation>
+      <wheelDiameter>0.1</wheelDiameter>
+      <torque>10</torque>
+    </plugin>
+    <plugin name="gazebo_ros_lidar_plugin" filename="libgazebo_ros_lidar.so">
+      <ros>
+        <namespace>/robot</namespace>
+        <remapFrom>scan</remapFrom> <remapTo>/scan</remapTo>
+      </ros>
+      <frameName>lidar_link</frameName>
+    </plugin>
+  </gazebo>
 </robot>

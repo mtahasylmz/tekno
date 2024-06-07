@@ -1,0 +1,9 @@
+<launch>
+  <arg name="urdf_path" default="$(find tekno)/urdf/robot_core.urdf"/>
+
+  <!-- convert xacro to urdf and set as robot_description -->
+  <param name="robot_description" command="$(find xacro)/xacro $(arg urdf_path)" />
+
+  <!-- start rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/robot.rviz" />
+</launch>
