@@ -1,5 +1,6 @@
+
 cmake_minimum_required(VERSION 3.0.2)
-project(tekno)
+project(turtlebot)
 
 
 
@@ -40,5 +41,4 @@ include_directories(
 
 
 #add_executable(random_velocities src/random_velocities.cpp )
-#tranquela target_link_libraries(random_velocities ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
-
+#target_link_libraries(random_velocities ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
