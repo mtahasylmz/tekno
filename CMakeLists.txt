@@ -46,5 +46,5 @@ install(DIRECTORY launch/
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
 
 
-#add_executable(random_velocities src/random_velocities.cpp )
-#target_link_libraries(random_velocities ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_executable(first_move src/first_move.cpp )
+target_link_libraries(first_move ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})

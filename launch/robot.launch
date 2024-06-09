@@ -26,7 +26,7 @@
   </node>
   
   <!-- run random publisher node-->
-  <!--  <node name="random_velocities" pkg="turtlebot" type="random_velocities" respawn="false" output="screen"/ -->
+  <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
   
 
 </launch>
