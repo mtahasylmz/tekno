@@ -79,27 +79,31 @@ int main(int argc, char **argv) {
     float xpos = 0;
     float ypos = 0;
     //command_vel.linear.x = 1;
-    command_vel.angular.z = 1;
+    int bak = 0;
+    //command_vel.angular.z = 1;
     
     command_velocity_publisher.publish(command_vel);
     while (ros::ok()) {
-    //     float r;
-    //     r = sqrt(pow(xpos - robot_position.x, 2) + pow(ypos - robot_position.y, 2));
-    //     if (r < 0.16 && counter > 150) {
-    //         counter = 0;
-    //         command_vel.angular.z *= -1;
-            
-
-    //         ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
-    //         ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
-    //         ROS_INFO("New velocity targets:  %f, %f \n", command_vel.linear.x, command_vel.angular.z);
-    //     }
+        if(counter >= 200){command_vel.angular.z = 1;}
+        if (counter > 278.5 && counter < 288) {
+            //counter = 0;             
+            //ROS_INFO("Counter: %d\n", bak);counter = 0;
+            command_vel.angular.z = -1;
+            //command_vel.linear.x = 1;
+            ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
+            ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
+            ROS_INFO("New velocity targets:  %f, %f \n", command_vel.linear.x, command_vel.angular.z);
+        }
+        if(counter > 288){command_vel.angular.z = 0;}
+        if(counter > 600){
+            command_vel.linear.x = 1;
+        }
 
        command_velocity_publisher.publish(command_vel);
 
-    //     counter++;
-    //     ros::spinOnce();
-    //     control_rate.sleep();
+        counter++;
+        ros::spinOnce();
+        control_rate.sleep();
     }
 
 
