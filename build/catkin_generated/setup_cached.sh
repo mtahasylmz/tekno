@@ -5,11 +5,11 @@
 # it emulates the modifications of the setup script without recurring computations
 
 # new environment variables
+export ROSLISP_PACKAGE_DIRECTORIES='/home/huseyin/tekno_ws/src/tekno/build/devel/share/common-lisp'
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/huseyin/tekno_ws/src/tekno/build/devel:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/huseyin/tekno_ws/src/tekno/build/devel/lib:$LD_LIBRARY_PATH"
 export PKG_CONFIG_PATH="/home/huseyin/tekno_ws/src/tekno/build/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/huseyin/tekno_ws/src/tekno/build'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/huseyin/tekno_ws/src/tekno/build/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/huseyin/tekno_ws/src/tekno:$ROS_PACKAGE_PATH"
