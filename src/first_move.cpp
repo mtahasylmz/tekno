@@ -85,7 +85,7 @@ int main(int argc, char **argv) {
     command_velocity_publisher.publish(command_vel);
     while (ros::ok()) {
         if(counter >= 200){command_vel.angular.z = 1;}
-        if (counter > 278.5 && counter < 286) {
+        if (counter > 278.5 && counter < 288) {
             //counter = 0;             
             //ROS_INFO("Counter: %d\n", bak);counter = 0;
             command_vel.angular.z = -1;
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
             ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
             ROS_INFO("New velocity targets:  %f, %f \n", command_vel.linear.x, command_vel.angular.z);
         }
-        if(counter > 285.5){command_vel.angular.z = 0;}
+        if(counter > 288){command_vel.angular.z = 0;}
         if(counter > 600){
             command_vel.linear.x = 1;
         }

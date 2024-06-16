@@ -37,7 +37,7 @@
             <geometry>
                 <box size="0.35 0.31 0.15"/>
             </geometry>
-            <material name="white"/>
+            <material name="blue"/>
         </visual>
 
         <collision>
@@ -45,7 +45,7 @@
             <geometry>
                 <box size="0.35 0.31 0.15"/>
             </geometry>
-            <material name="white"/>
+            <material name="blue"/>
         </collision>
         <inertial>
       <mass value="5.0"/>
@@ -66,6 +66,7 @@
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
+      <material name="black"/>
     </visual>
 
     <collision>
@@ -73,6 +74,7 @@
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
+      <material name="black"/>
     </collision>
     </link>
 
@@ -96,13 +98,16 @@
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
+      <material name="black"/>
     </visual>
+    
 
     <collision>
       <origin xyz="0 0 0" rpy="0 1.57 1.57" />
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
+      <material name="black"/>
     </collision>
     </link>
 
@@ -128,6 +133,7 @@
       <geometry>
         <sphere radius="0.021" />
       </geometry>
+      <material name="orange"/>
     </visual>
 
     <collision>
@@ -135,6 +141,7 @@
       <geometry>
         <sphere radius="0.021" />
       </geometry>
+      <material name="orange"/>
     </collision>
     </link>
     <joint name="rear_castor_joint" type="fixed">
