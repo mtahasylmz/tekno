@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Site BuildName="(empty)"
-	BuildStamp="20240610-0731-Experimental"
+	BuildStamp="20240626-0809-Experimental"
 	Name="soon"
 	Generator="ctest-3.16.3"
 	CompilerName="/usr/bin/c++"
@@ -21,14 +21,14 @@
 	TotalVirtualMemory="65559"
 	TotalPhysicalMemory="15364"
 	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="4114.65"
+	ProcessorClockFrequency="1300"
 	>
 	<Testing>
-		<StartDateTime>Jun 10 12:40 +03</StartDateTime>
-		<StartTestTime>1718012421</StartTestTime>
+		<StartDateTime>Jun 26 14:00 +03</StartDateTime>
+		<StartTestTime>1719399658</StartTestTime>
 		<TestList/>
-		<EndDateTime>Jun 10 12:40 +03</EndDateTime>
-		<EndTestTime>1718012421</EndTestTime>
+		<EndDateTime>Jun 26 14:00 +03</EndDateTime>
+		<EndTestTime>1719399658</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>
