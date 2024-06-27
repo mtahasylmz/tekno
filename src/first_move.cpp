@@ -87,7 +87,6 @@ int main(int argc, char **argv) {
         task_file.close();
     }
 
-    std::srand(static_cast<unsigned int>(time(nullptr))); //random number seed
 
     geometry_msgs::Twist command_vel;
     
