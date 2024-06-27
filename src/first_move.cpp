@@ -8,6 +8,10 @@
 #include <geometry_msgs/Twist.h>
 #include <ros/package.h>
 #include "sensor_msgs/LaserScan.h"
+#include <cmath>
+#include <algorithm>
+#include <tf/tf.h>
+
 
 #define WHEEL_SEPERATION 12345
 #define WHEEL_DIAMETER 54321
@@ -29,11 +33,18 @@ void LinkStatesCb(const gazebo_msgs::LinkStates::ConstPtr &msg) {
 }
 
 geometry_msgs::Point robot_position;
-
+geometry_msgs::Quaternion quat;
+double roll, pitch, yaw;
 void ModelStatesCb(const gazebo_msgs::ModelStates::ConstPtr &msg) {
     for (int i = 0; i < msg->name.size(); i++) {
         if (msg->name[i] == "robot") {
             robot_position = msg->pose[i].position;
+            quat = msg->pose[i].orientation;
+        
+            tf::Quaternion q(quat.x, quat.y, quat.z, quat.w);
+            tf::Matrix3x3(q).getRPY(roll, pitch, yaw);
+
+        
         }
     }
 }
@@ -55,7 +66,7 @@ int main(int argc, char **argv) {
     ros::Publisher command_velocity_publisher = nh.advertise<geometry_msgs::Twist>("/cmd_vel", 10);
     ros::Subscriber link_states_subscriber = nh.subscribe("/gazebo/link_states", 1, LinkStatesCb);
     ros::Subscriber model_states_subscriber = nh.subscribe("/gazebo/model_states", 1, ModelStatesCb);
-    ros::Subscriber lidar_subscriber = nh.subscribe("/my_robot/laser/scan", 1000, chatterCallback);
+    ros::Subscriber lidar_subscriber = nh.subscribe("/my_robot/laser/scan", 10, chatterCallback);
     
     ros::Rate control_rate(100);
 
@@ -79,30 +90,57 @@ int main(int argc, char **argv) {
     std::srand(static_cast<unsigned int>(time(nullptr))); //random number seed
 
     geometry_msgs::Twist command_vel;
+    
     int counter = 0;
 
     while (ros::ok()) {
-        if (counter >= 200) {
-            command_vel.angular.z = 1;
-        }
-        if (counter > 278.5 && counter < 288) {
-            command_vel.angular.z = -1;
-            ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
-            ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
-            ROS_INFO("New velocity targets: %f, %f", command_vel.linear.x, command_vel.angular.z);
-        }
-        if (counter > 288) {
-            command_vel.angular.z = 0;
-        }
-        if (counter > 600) {
-            command_vel.linear.x = 1;
-        }
+        // if (counter >= 200) {
+        //     command_vel.angular.z = 1;
+        // }
+        // if (counter > 278.5 && counter < 288) {
+        //     command_vel.angular.z = -1;
+        ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
+        ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
+        ROS_INFO("New velocity targets: %f, %f", command_vel.linear.x, command_vel.angular.z);
+        ROS_INFO("NEW angular things: %f, %f, %f", roll, pitch, yaw);
+        // }
+        // if (counter > 288) {
+        //     command_vel.angular.z = 0;
+        // }
+        // if (counter > 600) {
+        //     command_vel.linear.x = 1;
+        // }
 
-        command_velocity_publisher.publish(command_vel);
+        // command_velocity_publisher.publish(command_vel);
+        
 
-        counter++;
+        
+       
+        // double radian = (counter * M_PI) / 180.0;
+        // double hiz = sin(radian);
+
+        command_vel.linear.x = 1;
+        command_vel.angular.z = 0;
+
+        
+        double aci =  atan((  5- robot_position.y) / ( 7 - robot_position.x)) + M_PI/2 ;
+        
+
+        if ( aci < yaw + 0.1 ){
+            command_vel.angular.z = 0.5 ;
+            command_vel.linear.x = 0;
+            ROS_INFO("aci: %f, %f", aci, yaw);   
+
+        }   
+                
+
+        
+        
+
+        command_velocity_publisher.publish(command_vel);                        
         ros::spinOnce();
         control_rate.sleep();
+        counter ++ ;
     }
     
     return 0;

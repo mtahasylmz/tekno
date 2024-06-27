@@ -380,7 +380,8 @@
     <origin xyz="0.25 0 0.18" rpy="0 0 0"/>
   </joint>
 
-  <gazebo>
+
+    <gazebo reference="rightfront_cliff_sensor_link">
     <sensor name="lidar" type="ray">
       <update_rate>10</update_rate>
       <ray>
@@ -404,5 +405,6 @@
       </plugin>
     </sensor>
   </gazebo>
+
 
 </robot>
