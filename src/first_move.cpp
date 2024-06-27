@@ -99,10 +99,7 @@ int main(int argc, char **argv) {
         // }
         // if (counter > 278.5 && counter < 288) {
         //     command_vel.angular.z = -1;
-        ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
-        ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
-        ROS_INFO("New velocity targets: %f, %f", command_vel.linear.x, command_vel.angular.z);
-        ROS_INFO("NEW angular things: %f, %f, %f", roll, pitch, yaw);
+
         // }
         // if (counter > 288) {
         //     command_vel.angular.z = 0;
@@ -123,7 +120,7 @@ int main(int argc, char **argv) {
         command_vel.angular.z = 0;
 
         
-        double aci =  atan((  5- robot_position.y) / ( 7 - robot_position.x)) + M_PI/2 ;
+        double aci =  atan((  5- robot_position.y) / ( 7 - robot_position.x))  ;
         
 
         if ( aci < yaw + 0.1 ){
@@ -131,11 +128,15 @@ int main(int argc, char **argv) {
             command_vel.linear.x = 0;
             ROS_INFO("aci: %f, %f", aci, yaw);   
 
+        
+            ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
+            ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
+            ROS_INFO("New velocity targets: %f, %f", command_vel.linear.x, command_vel.angular.z);
+            ROS_INFO("NEW angular things: %f, %f, %f", roll, pitch, yaw);
+            
         }   
                 
 
-        
-        
 
         command_velocity_publisher.publish(command_vel);                        
         ros::spinOnce();

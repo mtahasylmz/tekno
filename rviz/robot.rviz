@@ -1,33 +1,42 @@
 Panels:
   - Class: rviz/Displays
     Name: Displays
-    Properties:
-      Displays:
-        - Alpha: 1
-          Class: rviz/RobotModel
-          Enabled: true
-          Name: Robot Model
-          Robot Description: /robot_description
-          Visible: true
-      Name: Displays
-    Splitter Ratio: 0.5
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Name: Tool Properties
+  - Class: rviz/Views
+    Name: Views
 Visualization Manager:
   Class: ""
-  Enabled: true
-  Name: Visualization Manager
-  Splitter Ratio: 0.5
-  Value: true
-  Views:
-    Current: ""
-    Saved: {}
-    class: rviz/Map
-Window Geometry:
   Displays:
-    collapsed: false
-    height: 480
-    maximized: false
-    width: 640
-    x: 0
-    y: 0
-  QMainWindow State: 0
-  Time: 0
+    - Class: rviz/Grid
+      Enabled: true
+      Name: Grid
+      Value: true
+    - Class: rviz/LaserScan
+      Enabled: true
+      Name: LIDAR
+      Topic: /scan
+      Queue Size: 10
+      Color: 255; 255; 255
+      Style: Points
+      Size (Pixels): 3
+      Decay Time: 0.2
+  Global Options:
+    Fixed Frame: lidar_link
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+  Views:
+    Current:
+      Class: rviz/TopDownOrtho
+      Angle: 0
+      Scale: 10
+      Target Frame: lidar_link
+      Value: Top Down Ortho
+    Saved: ~
+

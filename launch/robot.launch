@@ -28,5 +28,7 @@
   <!-- run random publisher node-->
   <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
   
-
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/robot.rviz" />
+  
+  
 </launch>
