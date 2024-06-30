@@ -19,8 +19,9 @@
 
     <!-- BASE LINK -->
 
-  <link name="base_link">
-<origin xyz="0 0 0"  />
+    <link name="base_link">
+
+    <origin xyz="0 0 0"/>
   </link>
 
     <!-- CHASSIS LINK -->
@@ -49,20 +50,20 @@
         </collision>
         <inertial>
       <mass value="5.0"/>
-      <inertia ixx="0.247" ixy="0" ixz="0" iyy="0.0604" iyz="0" izz="0.0910"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
     </inertial>
     </link>
 
         <!--left wheel-->
-    <!-- <link name="left_wheel_link">
+    <link name="left_wheel_link">
     <inertial>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-      <mass value="0.1" />
-      <inertia ixx="0.0000372" ixy="0" ixz="0" iyy="0.0000372" iyz="0" izz="0.0000288" />
+      <origin xyz="0 0 0" />
+      <mass value="0.01" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
     </inertial>
 
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 1.57 1.57" />
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
@@ -70,7 +71,7 @@
     </visual>
 
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0 0 0" rpy="0 1.57 1.57" />
       <geometry>
         <cylinder radius="0.036" length="0.024" />
       </geometry>
@@ -79,52 +80,18 @@
     </link>
 
    <joint name="left_wheel_joint" type="continuous">
-      <origin xyz="0 0.13 0.018" rpy="0 1.57 1.57"/>
-      <parent link="base_link" />
-      <child link="left_wheel_link" />
-      <axis xyz="0 0 1" />
-    </joint> -->
-
-
-    <joint name="left_wheel_joint" type="continuous">
-      <origin xyz="0 0.13 0.018" rpy="0 0 0" />
+      <origin xyz="0 0.13 0.015" rpy="0 0 0" />
       <parent link="base_link" />
       <child link="left_wheel_link" />
       <axis xyz="0 1 0" />
     </joint>
-        <link name="left_wheel_link">
-    <inertial>
-      <origin xyz="0 0 0" />
-      <mass value="0.1" />
-      <inertia ixx="0.0000372" ixy="0" ixz="0" iyy="0.0000372" iyz="0" izz="0.0000288" />
-    </inertial>
-
-    <visual>
-      <origin xyz="0 0 0" rpy="0 1.57 1.57" />
-      <geometry>
-        <cylinder radius="0.036" length="0.024" />
-      </geometry>
-      <material name="black"/>
-    </visual>
-    
-
-    <collision>
-      <origin xyz="0 0 0" rpy="0 1.57 1.57" />
-      <geometry>
-        <cylinder radius="0.036" length="0.024" />
-      </geometry>
-      <material name="black"/>
-    </collision>
-    </link>
-
-   
 
     <!--right wheel-->
     <link name="right_wheel_link">
     <inertial>
       <origin xyz="0 0 0" />
-      <mass value="0.1" />
-      <inertia ixx="0.0000372" ixy="0" ixz="0" iyy="0.0000372" iyz="0" izz="0.0000288" />
+      <mass value="0.01" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
     </inertial>
 
     <visual>
@@ -146,7 +113,7 @@
     </link>
 
    <joint name="right_wheel_joint" type="continuous">
-      <origin xyz="0 -0.13 0.018" rpy="0 0 0" />
+      <origin xyz="0 -0.13 0.015" rpy="0 0 0" />
       <parent link="base_link" />
       <child link="right_wheel_link" />
       <axis xyz="0 1 0" />
@@ -191,14 +158,6 @@
 
 
     <gazebo>
-    
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>robot</robotNamespace>
-    </plugin>
-        <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
-            <jointName>left_wheel_joint, right_wheel_joint</jointName>
-        </plugin>
-
       <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>40</updateRate>
@@ -406,5 +365,127 @@
       <windForceVariance>1</windForceVariance>  <!-- Variance in wind force -->
     </plugin>
   </gazebo>
+
+
+    <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.04"/>
+      </geometry>
+    </visual>
+  </link>
+
+    <collision>
+      <origin xyz= "0 0 0" rpy = "0 0 0"/> 
+      <geometry>
+        <cylinder length="0.1" radius="0.04"/>
+      </geometry>
+    </collision>
+
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/> <!-- LIDAR'ın takılacağı bağlantı -->
+    <child link="lidar_link"/>
+    <origin xyz="0.25 0 0.18" rpy="0 0 0"/>
+  </joint>
+
+
+
+
+  <!-- hokuyo -->
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize>
+      <update_rate>5.5</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>6.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise parameters based on published spec for Hokuyo laser
+               achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
+               stddev of 0.01m will put 99.7% of samples within 0.03m of the true
+               reading. -->
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/rrbot/laser/scan</topicName>
+        <frameName>lidar_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+
+<!-- differential drive plugins -->
+
+
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+    <!-- Plugin update rate in Hz -->
+    <updateRate>10</updateRate>
+
+    <!-- Name of left joint, defaults to `left_joint` -->
+    <leftJoint>left_wheel_joint</leftJoint>
+
+    <!-- Name of right joint, defaults to `right_joint` -->
+    <rightJoint>right_wheel_joint</rightJoint>
+
+    <!-- The distance from the center of one wheel to the other, in meters, defaults to 0.34 m -->
+    <wheelSeparation>0.26</wheelSeparation>
+
+    <!-- Diameter of the wheels, in meters, defaults to 0.15 m -->
+    <wheelDiameter>0.072</wheelDiameter>
+
+    <!-- Wheel acceleration, in rad/s^2, defaults to 0.0 rad/s^2 -->
+    <wheelAcceleration>1.0</wheelAcceleration>
+
+    <!-- Maximum torque which the wheels can produce, in Nm, defaults to 5 Nm -->
+    <wheelTorque>20</wheelTorque>
+
+    <!-- Topic to receive geometry_msgs/Twist message commands, defaults to `cmd_vel` -->
+    <commandTopic>cmd_vel</commandTopic>
+
+    <!-- Topic to publish nav_msgs/Odometry messages, defaults to `odom` -->
+    <odometryTopic>odom</odometryTopic>
+
+    <!-- Odometry frame, defaults to `odom` -->
+    <odometryFrame>odom</odometryFrame>
+
+    <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
+    <robotBaseFrame>base_link</robotBaseFrame>
+
+    <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
+    <odometrySource>1</odometrySource>
+
+    <!-- Set to true to publish transforms for the wheel links, defaults to false -->
+    <publishWheelTF>true</publishWheelTF>
+
+    <!-- Set to true to publish transforms for the odometry, defaults to true -->
+    <publishOdom>true</publishOdom>
+
+    <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
+    <publishWheelJointState>true</publishWheelJointState>
+
+    <!-- Set to true to swap right and left wheels, defaults to true -->
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
+
 
 </robot>

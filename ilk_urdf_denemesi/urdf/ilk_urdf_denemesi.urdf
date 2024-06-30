@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="ilk_urdf_denemesi">
+  <link
+    name="arac_govdesi">
+    <inertial>
+      <origin
+        xyz="3.4694E-18 -2.6021E-18 -0.005"
+        rpy="0 0 0" />
+      <mass
+        value="0.44165" />
+      <inertia
+        ixx="0.00083732"
+        ixy="2.1783E-20"
+        ixz="-4.442E-21"
+        iyy="0.0032823"
+        iyz="-2.7934E-21"
+        izz="0.0041123" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arac_govdesi.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arac_govdesi.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="on_aks">
+    <inertial>
+      <origin
+        xyz="0.0121919072284463 -0.000539071904290639 -0.0128442176525162"
+        rpy="0 0 0" />
+      <mass
+        value="0.0629857665072841" />
+      <inertia
+        ixx="0.000230335933993847"
+        ixy="-8.99928503974113E-06"
+        ixz="1.68802234457314E-11"
+        iyy="2.71934378558384E-05"
+        iyz="3.31750727949568E-12"
+        izz="0.000255953839381208" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_aks.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_aks.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="onaks"
+    type="continuous">
+    <origin
+      xyz="0.13 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="arac_govdesi" />
+    <child
+      link="on_aks" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="20"
+      velocity="20" />
+    <dynamics
+      damping="0.01"
+      friction="0.01" />
+  </joint>
+  <link
+    name="on_sag_teker">
+    <inertial>
+      <origin
+        xyz="5.13478148889135E-16 1.49186218934005E-16 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0510398850465441" />
+      <inertia
+        ixx="3.84020648959416E-05"
+        ixy="-2.54347677969653E-20"
+        ixz="2.11758236813575E-21"
+        iyy="3.84020648959417E-05"
+        iyz="-1.17059366520985E-21"
+        izz="7.61460321044019E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_sag_teker.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_sag_teker.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="onsag"
+    type="continuous">
+    <origin
+      xyz="-0.0053005 -0.11988 -0.0175"
+      rpy="1.5708 0 -0.044185" />
+    <parent
+      link="on_aks" />
+    <child
+      link="on_sag_teker" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="200" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="on_sol_teker">
+    <inertial>
+      <origin
+        xyz="5.13478148889135E-16 -2.37657116208823E-16 2.77555756156289E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0510398850465443" />
+      <inertia
+        ixx="3.84020648959417E-05"
+        ixy="1.39282940059586E-20"
+        ixz="-3.49401090742399E-21"
+        iyy="3.84020648959417E-05"
+        iyz="4.85626919134204E-21"
+        izz="7.61460321044021E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_sol_teker.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/on_sol_teker.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="onsol"
+    type="continuous">
+    <origin
+      xyz="0.0053005 0.11988 -0.0175"
+      rpy="1.5708 0 -0.044185" />
+    <parent
+      link="on_aks" />
+    <child
+      link="on_sol_teker" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="200" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="arka_aks">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_aks.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_aks.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arkaaks"
+    type="continuous">
+    <origin
+      xyz="-0.13 0 0.0075"
+      rpy="0 0 0" />
+    <parent
+      link="arac_govdesi" />
+    <child
+      link="arka_aks" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="20"
+      velocity="20" />
+    <dynamics
+      damping="0.01"
+      friction="0.01" />
+  </joint>
+  <link
+    name="arka_sag_teker">
+    <inertial>
+      <origin
+        xyz="7.24420523567915E-14 1.85615411929518E-16 -7.7715611723761E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0510398850465442" />
+      <inertia
+        ixx="3.84020648959416E-05"
+        ixy="-2.94036447746244E-20"
+        ixz="2.44051367927645E-20"
+        iyy="3.84020648959417E-05"
+        iyz="-5.859850067467E-22"
+        izz="7.6146032104402E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_sag_teker.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_sag_teker.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arkasag"
+    type="continuous">
+    <origin
+      xyz="-0.0018905 -0.11999 0"
+      rpy="1.5708 0 -0.015755" />
+    <parent
+      link="arka_aks" />
+    <child
+      link="arka_sag_teker" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="200" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="arka_sol_teker">
+    <inertial>
+      <origin
+        xyz="-7.16371406639382E-14 1.83880688453542E-16 8.88178419700125E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.0510398850465442" />
+      <inertia
+        ixx="3.84020648959416E-05"
+        ixy="-3.0250340681173E-20"
+        ixz="6.8292031372378E-21"
+        iyy="3.84020648959417E-05"
+        iyz="-5.09967751956374E-21"
+        izz="7.6146032104402E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_sol_teker.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ilk_urdf_denemesi/meshes/arka_sol_teker.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arkasol"
+    type="continuous">
+    <origin
+      xyz="0.0018905 0.11999 0"
+      rpy="1.5708 0 -0.015755" />
+    <parent
+      link="arka_aks" />
+    <child
+      link="arka_sol_teker" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="200"
+      velocity="200" />
+    <dynamics
+      damping="0.1"
+      friction="0.1" />
+  </joint>
+</robot>
