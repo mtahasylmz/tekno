@@ -5,5 +5,5 @@
   <param name="robot_description" command="$(find xacro)/xacro $(arg urdf_path)" />
 
   <!-- start rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/robot.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/mesel.rviz" />
 </launch>

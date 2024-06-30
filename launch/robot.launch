@@ -24,7 +24,9 @@
     <remap from="/joint_states" to="/tekno/joint_states" />
     <param name="publish_frequency" type="double" value="50.0" />
   </node>
-  
+
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/mesel.rviz" />
   <!-- run random publisher node-->
   <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
   
