@@ -24,7 +24,8 @@
     <remap from="/joint_states" to="/tekno/joint_states" />
     <param name="publish_frequency" type="double" value="50.0" />
   </node>
-  
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/>
+
   <!-- run random publisher node-->
   <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
   

@@ -126,7 +126,6 @@ int main(int argc, char **argv) {
             command_vel.angular.z = 0.5 ;
             command_vel.linear.x = 0;
             ROS_INFO("aci: %f, %f", aci, yaw);   
-
         
             ROS_INFO("Current robot position: %f, %f, %f", robot_position.x, robot_position.y, robot_position.z);
             ROS_INFO("Current left-right wheel angular velocities: %f, %f", left_wheel_velocity, right_wheel_velocity);
@@ -135,8 +134,6 @@ int main(int argc, char **argv) {
             
         }   
                 
-
-
         command_velocity_publisher.publish(command_vel);                        
         ros::spinOnce();
         control_rate.sleep();
