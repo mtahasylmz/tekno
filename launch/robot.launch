@@ -29,7 +29,11 @@
   <!-- run random publisher node-->
   <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
   
+  <!-- rviz -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/robot.rviz" />
   
-  
+  <!-- gmapping geliyor -->
+  <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" />
+
+
 </launch>
