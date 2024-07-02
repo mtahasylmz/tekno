@@ -85,6 +85,10 @@ void keyboardLoop() {
             command_vel.linear.x = 0;
             command_vel.angular.z = 0;
         }
+        else{
+            command_vel.linear.x = 0;
+            command_vel.angular.z = 0;
+        }
     }
 }
 
