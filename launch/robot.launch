@@ -26,6 +26,8 @@
     <param name="publish_frequency" type="double" value="50.0" />
   </node>
 
+
+  <include file="$(find tekno)/launch/navigate.launch"/>
     <!-- <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
         <remap from="scan" to="/scan"/>
     </node> -->
