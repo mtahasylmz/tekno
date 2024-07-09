@@ -36,7 +36,7 @@
     <remap from="/rrbot/laser/scan" to="/scan"/>
     <param name="publish_frequency" type="double" value="50.0" />
   </node> -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/laserScan.rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/last.rviz" />
   <!-- run random publisher node-->
   <!-- <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/> -->
   
