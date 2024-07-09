@@ -26,13 +26,17 @@
     <param name="publish_frequency" type="double" value="50.0" />
   </node>
 
-    <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
-        <remap from="scan" to="/rrbot/laser/scan"/>
-    </node>
+    <!-- <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+        <remap from="scan" to="/scan"/>
+    </node> -->
 
+  <!-- <node pkg="als_ros" type="als_ros" name="als_ros" output="screen" respawn="false">
+    <remap from="/rrbot/laser/scan" to="/scan"/>
+    <param name="publish_frequency" type="double" value="50.0" />
+  </node> -->
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/laserScan.rviz" />
   <!-- run random publisher node-->
-  <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/>
+  <!-- <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/> -->
   
-
+  
 </launch>

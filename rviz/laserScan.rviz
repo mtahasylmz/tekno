@@ -82,7 +82,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        lidar_link:
+        laser:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -118,7 +118,7 @@ Visualization Manager:
           Value: true
         left_wheel_link:
           Value: true
-        lidar_link:
+        laser:
           Value: true
         map:
           Value: true
@@ -144,7 +144,7 @@ Visualization Manager:
                 {}
               left_wheel_link:
                 {}
-              lidar_link:
+              laser:
                 {}
               rear_wheel_link:
                 {}
@@ -167,7 +167,7 @@ Visualization Manager:
           Value: true
         left_wheel_link:
           Value: true
-        lidar_link:
+        laser:
           Value: true
         map:
           Value: true
@@ -193,7 +193,7 @@ Visualization Manager:
                 {}
               left_wheel_link:
                 {}
-              lidar_link:
+              laser:
                 {}
               rear_wheel_link:
                 {}
@@ -234,7 +234,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /rrbot/laser/scan
+      Topic: /scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
