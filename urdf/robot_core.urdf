@@ -373,7 +373,7 @@
         <cylinder length="0.1" radius="0.04"/>
       </geometry>
     </visual>
-  </link>
+  
 
     <collision>
       <origin xyz= "0 0 0" rpy = "0 0 0"/> 
@@ -381,10 +381,22 @@
         <cylinder length="0.1" radius="0.04"/>
       </geometry>
     </collision>
-
+</link>
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/> <!-- LIDAR'ın takılacağı bağlantı -->
     <child link="laser"/>
+    <origin xyz="0.25 0 0.18" rpy="0 0 0"/>
+  </joint>
+
+
+  <link name="laser_frame">
+
+  </link>
+
+
+  <joint name="lidar_frame_joint" type="fixed">
+    <parent link="base_link"/> <!-- LIDAR'ın takılacağı bağlantı -->
+    <child link="laser_frame"/>
     <origin xyz="0.25 0 0.18" rpy="0 0 0"/>
   </joint>
 
@@ -418,7 +430,7 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/scan</topicName>
+        <topicName>/scanGazebo</topicName>
         <frameName>laser</frameName>
       </plugin>
     </sensor>

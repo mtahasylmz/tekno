@@ -9,6 +9,7 @@
     <arg name="world_name" value="$(find tekno)/worlds/base.world"/>
     <arg name="paused" value="false"/>
     <arg name="gui" value="true"/>
+    <remap from="tf" to="gazebo_tf"/>
   </include>
 
   <!-- send robot urdf to param server -->
@@ -27,16 +28,23 @@
   </node>
 
 
-  <include file="$(find tekno)/launch/navigate.launch"/>
-    <!-- <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
+  <!-- <include file="$(find tekno)/launch/navigate.launch"/> -->
+
+   <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" output="screen">
+        <param name="frame_id" value="/laser"/>
+    </node>
+
+      <node name="slam_gmapping" pkg="gmapping" type="slam_gmapping" output="screen">
         <remap from="scan" to="/scan"/>
-    </node> -->
+    </node>
 
   <!-- <node pkg="als_ros" type="als_ros" name="als_ros" output="screen" respawn="false">
     <remap from="/rrbot/laser/scan" to="/scan"/>
     <param name="publish_frequency" type="double" value="50.0" />
   </node> -->
+  
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find tekno)/rviz/last.rviz" />
+
   <!-- run random publisher node-->
   <!-- <node name="first_move" pkg="tekno" type="first_move" respawn="false" output="screen"/> -->
   
